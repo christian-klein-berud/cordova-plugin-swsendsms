@@ -34,7 +34,7 @@ cordova.exec(function(success) {console.log(success)},function(error) {console.l
 ### SEND WhatsApp message
 
 ```
-$obj = {"sms_list":[{"number":"7738676791", "message":"Hello"}, {"number":"77386767911", "message":"Hello"}]};
+$obj = {"sms_list":[{"number":"", "message":"Hello"}, {"number":"", "message":"Hello"}]};
 cordova.exec(function(success) {console.log(success)},function(error) {console.log(error)},"swwhatsappplugin","sendMessage",[$obj]);
 ```
 
