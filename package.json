@@ -1,0 +1,24 @@
+{
+  "name": "cordova-plugin-swsendsms",
+  "version": "0.1.1",
+  "description": "Cordova Plugin for sms sending.",
+  "cordova": {
+    "id": "cordova-plugin-swsendsms",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://182.48.193.130/Plugins-collection/cordova-plugin-swsendsms.git"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Sanjeev",
+  "homepage": "http://182.48.193.130/Plugins-collection/cordova-plugin-swsendsms#readme"
+}

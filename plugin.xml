@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-swsendsms" version="0.1.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SWSendSMS</name>
+    <author>Sanjeev</author>
+    <description>Cordova Plugin for sending sms.</description>
+ 
+    <js-module name="swsms" src="www/smsplugin.js"> 
+ <clobbers target="cordova.plugin.swsms" /> 
+  </js-module> 
+    
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+	
+	 <feature name="swsmsplugin">
+        <param name="android-package" value="cordova.plugin.swsms.SendSMSPlugin" />
+    </feature>
+	<feature name="swwhatsappplugin">
+        	<param name="android-package" value="cordova.plugin.swsms.SendWhatsappMessagePlugin" />
+    	</feature>
+        </config-file>
+		<framework src="build.gradle" custom="true" type="gradleReference" />
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+			<activity android:name="cordova.plugin.swsms.BaseActivity"/>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+		    <uses-permission android:name="android.permission.SEND_SMS" />
+		</config-file>
+
+        <source-file src="src/android/InternalPermissionListner.java" target-dir="src/cordova.plugin/swsms" />
+		<source-file src="src/android/BaseActivity.java" target-dir="src/cordova.plugin/swsms" />
+		<source-file src="src/android/SendSMSPlugin.java" target-dir="src/cordova.plugin/swsms" />
+		<source-file src="src/android/SMSList.java" target-dir="src/cordova.plugin/swsms" />
+		<source-file src="src/android/SendWhatsappMessagePlugin.java" target-dir="src/cordova.plugin/swsms" />
+		
+    </platform>
+
+<!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="swsmsplugin">
+          <param name="ios-package" value="swsmsplugin"/>
+          <param name="onload" value="true"/>
+      </feature>
+
+    <feature name="swwhatsappplugin">
+        <param name="ios-package" value="swwhatsappplugin"/>
+        <param name="onload" value="true"/>
+    </feature>
+    </config-file>
+
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>whatsapp</string>
+    </array>
+
+    </config-file>
+        <header-file src="src/ios/swsmsplugin.h"/>
+        <source-file src="src/ios/swsmsplugin.m"/>
+
+        <header-file src="src/ios/swwhatsappplugin.h"/>
+        <source-file src="src/ios/swwhatsappplugin.m"/>
+
+        <framework src="MessageUI.framework" />
+        <framework src="CoreTelephony.framework" />
+
+  </platform>
+
+</plugin>
+
